@@ -14,7 +14,11 @@ namespace Week2Week.Data
             : base(options)
         {
         }
-
+        public DbSet<Transaction> Transaction { get; set; }
+        public DbSet<TransactionType> TransactionType { get; set; }
+        public DbSet<TransactionSubType> TransactionTypeSubCategory { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

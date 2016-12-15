@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Week2Week.Models;
 using Week2Week.Data;
-using Week2Week.ViewModels;
+
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -140,13 +140,11 @@ namespace Week2Week.Controllers
         //Method: Purpose is to render the TransactionTypes view, which displays all Transaction categories
         public async Task<IActionResult> Types()
         {
-            //This creates a new instance of the TransactionTypesViewModel and passes in the current session with the database (context) as an argument
-
-            TransactionTypeViewModel model = new TransactionTypeViewModel(context);
-            model.TransactionTypes = await context.TransactionType.OrderBy(s => s.Type).ToListAsync();
-            model.TransactionSubType = await context.TransactionSubType.OrderBy(s => s.SubType).ToListAsync();
+            TransactionTypesViewModel model = new TransactionTypesViewModel(context);
+            model.TransactionTypes = await context.TransactionType.OrderBy(s => s.TransactionType).ToListAsync();
+            model.TransactionSubTypes = await context.TransactionSubType.OrderBy(s => s.SubType).ToListAsync();
             //list of subcategories
-            var subCats = context.TransactionSubType.ToList();
+            var subTypes = context.TransactionSubType.ToList();
             //cycle through each subcategory and define its Quantity as 
             //subCats.ForEach(sc => sc.Quantity = context.Transaction.Count(p => p.TransactionSubTypeId == sc.TransactionSubTypeId));
             // model.TransactionTypes = TransactionTypes;
@@ -163,4 +161,4 @@ namespace Week2Week.Controllers
         
         }
     }
-}
+
