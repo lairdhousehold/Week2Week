@@ -12,8 +12,6 @@ namespace Week2Week.Models
         [Key]
         public int TransactionTypeId { get; set; }
 
-     
-
         [Required]
         [StringLength(50)]
         public string Label { get; set; }

@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Week2Week.Models;
+using Week2Week.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Identity;
 
+<<<<<<< Updated upstream
 
 using Week2Week.Models;
 using Week2Week.Data;
@@ -10,6 +15,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Identity;
 
 
+=======
+>>>>>>> Stashed changes
 namespace Week2Week.Models.TransactionViewModels
 {
     public class CreateTransaction
@@ -21,11 +28,19 @@ namespace Week2Week.Models.TransactionViewModels
         {
 
             this.TransactionTypeId = ctx.TransactionType
+<<<<<<< Updated upstream
                                     .OrderBy(l => l.Type)
                                     .AsEnumerable()
                                     .Select(li => new SelectListItem
                                     {
                                         Text = li.Type,
+=======
+                                    .OrderBy(l => l.Label)
+                                    .AsEnumerable()
+                                    .Select(li => new SelectListItem
+                                    {
+                                        Text = li.Label,
+>>>>>>> Stashed changes
                                         Value = li.TransactionTypeId.ToString()
                                     }).ToList();
 
