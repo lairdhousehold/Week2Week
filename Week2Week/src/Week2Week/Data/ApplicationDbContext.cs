@@ -14,9 +14,10 @@ namespace Week2Week.Data
             : base(options)
         {
         }
+
         public DbSet<Transaction> Transaction { get; set; }
         public DbSet<TransactionType> TransactionType { get; set; }
-        public DbSet<TransactionSubType> TransactionTypeSubCategory { get; set; }
+        public DbSet<TransactionSubType> TransactionSubType { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         
         protected override void OnModelCreating(ModelBuilder builder)
@@ -26,5 +27,6 @@ namespace Week2Week.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
     }
 }

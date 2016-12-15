@@ -4,22 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using User_Authentication.Models;
 
 namespace Week2Week.Models
 {
-    public class TransactionSubType
+    public class TransactionType
     {
         [Key]
-        public int TransactionSubTypeId { get; set; }
-
+        public int TransactionTypeId { get; set; }
         [Required]
         [StringLength(50)]
-        public string SubType { get; set; }
-
-        public int TransactionTypeId { get; set; }
-
-        public TransactionType TransactionType { get; set; }
-
+        public string Type { get; set; }
+        public ICollection<Transaction> Transactions;
 
     }
 }
