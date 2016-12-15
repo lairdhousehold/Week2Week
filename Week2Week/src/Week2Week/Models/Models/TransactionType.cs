@@ -7,19 +7,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Week2Week.Models
 {
-    public class TransactionSubType
+    public class TransactionType
     {
         [Key]
-        public int TransactionSubTypeId { get; set; }
+        public int TransactionTypeId { get; set; }
+
+     
 
         [Required]
         [StringLength(50)]
-        public string SubType { get; set; }
-
-        public int TransactionTypeId { get; set; }
-
-        public TransactionType TransactionType { get; set; }
-
-
+        public string Label { get; set; }
+        public ICollection<Transaction> Transactions;
     }
 }

@@ -11,8 +11,9 @@ namespace Week2Week.Models
 {
     public class Transaction
     {
-        [Key]
-        public int TranscactionId { get; set; }
+       
+        public int TransactionId { get; set; }
+
 
         [Required]
         [StringLength(55)]
