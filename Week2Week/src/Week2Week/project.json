@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-Week2Week-5c4b7243-833c-4ba1-a735-5b3b6a04521e",
 
   "dependencies": {
@@ -41,10 +41,11 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc":  {
+    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "System.Linq": "4.3.0"
   },
 
   "tools": {
