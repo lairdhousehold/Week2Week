@@ -93,7 +93,7 @@ namespace Week2Week.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetSubCategories([FromRoute]int id)
+        public IActionResult GetSubTypes([FromRoute]int id)
         {
             //get sub categories with that Transaction type on them
             var subTypes = context.TransactionSubType.OrderBy(s => s.SubType.ToUpper()).Where(t => t.TransactionTypeId == id).ToList();

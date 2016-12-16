@@ -77,10 +77,11 @@ namespace Week2Week
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            //DbInitializer.Initialize(app.ApplicationServices);
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+            
 
             app.UseIdentity();
 
