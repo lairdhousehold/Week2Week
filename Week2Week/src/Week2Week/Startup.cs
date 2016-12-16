@@ -90,7 +90,7 @@ namespace Week2Week
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Transaction}/{action=Index}/{id?}");
             });
         }
     }

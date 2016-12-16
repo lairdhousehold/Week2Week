@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Week2Week.Data;
 
 namespace Week2Week.Data.Migrations
 {
@@ -15,7 +13,7 @@ namespace Week2Week.Data.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.0-rc3")
+                .HasAnnotation("ProductVersion", "1.0.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -174,6 +172,71 @@ namespace Week2Week.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Week2Week.Models.Transaction", b =>
+                {
+                    b.Property<int>("TransactionId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<double>("Amount");
+
+                    b.Property<bool>("IsReoccurring");
+
+                    b.Property<DateTime>("SelectedDate");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 55);
+
+                    b.Property<int>("TransactionSubTypeId");
+
+                    b.Property<int>("TransactionTypeId");
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("TransactionId");
+
+                    b.HasIndex("TransactionSubTypeId");
+
+                    b.HasIndex("TransactionTypeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Transaction");
+                });
+
+            modelBuilder.Entity("Week2Week.Models.TransactionSubType", b =>
+                {
+                    b.Property<int>("TransactionSubTypeId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("SubType")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 50);
+
+                    b.Property<int>("TransactionTypeId");
+
+                    b.HasKey("TransactionSubTypeId");
+
+                    b.HasIndex("TransactionTypeId");
+
+                    b.ToTable("TransactionSubType");
+                });
+
+            modelBuilder.Entity("Week2Week.Models.TransactionType", b =>
+                {
+                    b.Property<int>("TransactionTypeId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Label")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 50);
+
+                    b.HasKey("TransactionTypeId");
+
+                    b.ToTable("TransactionType");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
@@ -208,6 +271,32 @@ namespace Week2Week.Data.Migrations
                     b.HasOne("Week2Week.Models.ApplicationUser")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Week2Week.Models.Transaction", b =>
+                {
+                    b.HasOne("Week2Week.Models.TransactionSubType", "TransactionSubType")
+                        .WithMany()
+                        .HasForeignKey("TransactionSubTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Week2Week.Models.TransactionType", "TransactionType")
+                        .WithMany()
+                        .HasForeignKey("TransactionTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Week2Week.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Week2Week.Models.TransactionSubType", b =>
+                {
+                    b.HasOne("Week2Week.Models.TransactionType", "TransactionType")
+                        .WithMany()
+                        .HasForeignKey("TransactionTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }
