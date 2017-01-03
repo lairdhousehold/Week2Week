@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-
 using Week2Week.Models;
 using Week2Week.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Identity;
+
+
+
 
 
 namespace Week2Week.Models.TransactionViewModels
@@ -21,11 +22,11 @@ namespace Week2Week.Models.TransactionViewModels
         {
 
             this.TransactionTypeId = ctx.TransactionType
-                                    .OrderBy(l => l.Type)
+                                    .OrderBy(l => l.Label)
                                     .AsEnumerable()
                                     .Select(li => new SelectListItem
                                     {
-                                        Text = li.Type,
+                                        Text = li.Label,
                                         Value = li.TransactionTypeId.ToString()
                                     }).ToList();
 
@@ -37,4 +38,3 @@ namespace Week2Week.Models.TransactionViewModels
         }
     }
 }
-

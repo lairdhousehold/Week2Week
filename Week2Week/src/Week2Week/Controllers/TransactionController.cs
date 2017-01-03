@@ -93,7 +93,7 @@ namespace Week2Week.Controllers
         }
 
         [HttpPost]
-        public IActionResult GetSubCategories([FromRoute]int id)
+        public IActionResult GetSubTypes([FromRoute]int id)
         {
             //get sub categories with that Transaction type on them
             var subTypes = context.TransactionSubType.OrderBy(s => s.SubType.ToUpper()).Where(t => t.TransactionTypeId == id).ToList();
@@ -141,7 +141,7 @@ namespace Week2Week.Controllers
         public async Task<IActionResult> Types()
         {
             TransactionTypesViewModel model = new TransactionTypesViewModel(context);
-            model.TransactionTypes = await context.TransactionType.OrderBy(s => s.TransactionType).ToListAsync();
+            model.TransactionTypes = await context.TransactionType.OrderBy(s => s.Label).ToListAsync();
             model.TransactionSubTypes = await context.TransactionSubType.OrderBy(s => s.SubType).ToListAsync();
             //list of subcategories
             var subTypes = context.TransactionSubType.ToList();

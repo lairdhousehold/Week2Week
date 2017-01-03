@@ -1,7 +1,7 @@
 ﻿// Write your Javascript code.
 $("#Transaction_TransactionTypeId").on("change", function (e) {
     $.ajax({
-        url: `/Products/GetSubCategories/${$(this).val()}`,
+        url: `/Transaction/GetSubTypes/${$(this).val()}`,
         method: "POST",
         dataType: "json",
         contentType: 'application/json; charset=utf-8'

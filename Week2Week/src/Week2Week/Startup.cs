@@ -77,10 +77,11 @@ namespace Week2Week
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            //DbInitializer.Initialize(app.ApplicationServices);
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+            
 
             app.UseIdentity();
 
@@ -90,7 +91,7 @@ namespace Week2Week
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Transaction}/{action=Index}/{id?}");
             });
         }
     }

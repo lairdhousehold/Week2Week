@@ -1,0 +1,19 @@
+﻿@model Week2Week.Models.TransactionViewModels.TransactionList
+
+@{
+    ViewData["Title"] = "Transaction Listing";
+}
+
+<h2 class="top-buffer">@ViewData["Title"]</h2>
+
+@foreach (var Transaction in Model.Transactions)
+{
+    <div class="row TransactionRow">
+
+        <div class="col-md-6"><a asp-action="Detail" asp-route-id="@Transaction.TransactionId">@Html.DisplayFor(modelItem => Transaction.Title)</a></div>
+        <div class="col-md-2">$@Html.DisplayFor(modelItem => Transaction.Amount)</div>
+        <div class="col-md-2">@Html.DisplayFor(modelItem => Transaction.Title)</div>
+        <div class="col-md-2">
+        </div>
+    </div>
+}
