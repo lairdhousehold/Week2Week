@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Week2Week.Models.TransactionViewModels.TransactionTypesViewModel
+
 @{
+    ViewData["Title"] = "Categories";
+}
+<h2>@ViewData["Title"]</h2>
+
+@foreach (var type in Model.TransactionTypes)
+{
+    <div class="row typesList">
+        <div class="col-md-12"><h3>@Html.DisplayFor(modelItem => type.Label)</h3></div>
+    </div>
+
+    @foreach (var subcat in Model.TransactionSubTypes)
+    {
+        if (subcat.TransactionTypeId == type.TransactionTypeId)
+        {
+            <div class="row typesSubCategories">
+                <div class="col-md-12"><a asp-controller="Transactions" asp-action="TransactionSubTypes" asp-route-id="@subcat.TransactionSubTypeId"><span>@Html.DisplayFor(modelItem => subcat.SubType)</span><span>(@Html.DisplayFor(modelItem => subcat.Quantity)</span>)</a></div>
+            </div>
+        }
+    }
 }
