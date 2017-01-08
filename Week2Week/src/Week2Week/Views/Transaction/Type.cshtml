@@ -1,0 +1,19 @@
+﻿@model Week2Week.Models.TransactionViewModels.TransactionList
+@using Week2Week.Models;
+
+@{
+    ViewData["Title"] = "Transaction Listing";
+}
+<h2>@ViewData["Title"]</h2>
+
+@foreach (Transaction item in Model.Transactions)
+
+{
+    <div class="row TransactionRow">
+        <div class="col-md-6"><a asp-action="Detail" asp-route-id="@item.TransactionId">@Html.DisplayFor(modelItem => item.Title)</a></div>
+        <div class="col-md-2">$@Html.DisplayFor(modelItem => item.Amount)</div>
+        <div class="col-md-2">@Html.DisplayFor(modelItem => item.Title)</div>
+        <div class="col-md-2">
+        </div>
+    </div>
+}

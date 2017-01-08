@@ -140,8 +140,13 @@ namespace Week2Week.Controllers
         //Method: Purpose is to render the TransactionTypes view, which displays all Transaction categories
         public async Task<IActionResult> Types()
         {
+<<<<<<< Updated upstream
             TransactionTypesViewModel model = new TransactionTypesViewModel(context);
             model.TransactionTypes = await context.TransactionType.OrderBy(s => s.TransactionType).ToListAsync();
+=======
+            TransactionSubTypesViewModel model = new TransactionSubTypesViewModel(context);
+            model.TransactionTypes = await context.TransactionType.OrderBy(s => s.Label).ToListAsync();
+>>>>>>> Stashed changes
             model.TransactionSubTypes = await context.TransactionSubType.OrderBy(s => s.SubType).ToListAsync();
             //list of subcategories
             var subTypes = context.TransactionSubType.ToList();
