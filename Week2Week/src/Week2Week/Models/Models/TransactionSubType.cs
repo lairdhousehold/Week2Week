@@ -19,6 +19,7 @@ namespace Week2Week.Models
         public int TransactionTypeId { get; set; }
 
         public TransactionType TransactionType { get; set; }
+
         [NotMappedAttribute]
 
         public int Quantity { get; set; }
