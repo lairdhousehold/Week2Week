@@ -20,6 +20,10 @@ namespace Week2Week.Models
 
         public TransactionType TransactionType { get; set; }
 
+        [NotMappedAttribute]
+
+        public int Quantity { get; set; }
+
 
     }
 }

@@ -36,7 +36,7 @@
         <div class="form-group">
             <label asp-for="Transaction.TransactionType" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                @Html.DropDownList("Transaction.TransactionType", @Model.TransactionTypeId)
+                @Html.DropDownList("Transaction.TransactionTypeId", @Model.TransactionTypeId)
                 <span asp-validation-for="Transaction.TransactionType" class="text-danger" />
             </div>
         </div>

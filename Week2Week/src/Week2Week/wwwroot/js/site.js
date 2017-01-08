@@ -10,7 +10,7 @@ $("#Transaction_TransactionTypeId").on("change", function (e) {
         $("#Transaction_TransactionSubTypeId").append("<option value=null> Choose the kind of credit or debit this is</option>");
         subTypes.forEach((option) => {
             console.log("these are the options", option);
-            $("#Transaction_TransactionSubTypeId").append(`<option value="${option.TransactionSubTypeId}">${option.name}</option>`)
+            $("#Transaction_TransactionSubTypeId").append(`<option value="${option.transactionSubTypeId}">${option.subType}</option>`)
         });
     });
 });

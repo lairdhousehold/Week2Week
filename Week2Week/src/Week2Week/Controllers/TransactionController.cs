@@ -144,9 +144,9 @@ namespace Week2Week.Controllers
             model.TransactionTypes = await context.TransactionType.OrderBy(s => s.Label).ToListAsync();
             model.TransactionSubTypes = await context.TransactionSubType.OrderBy(s => s.SubType).ToListAsync();
             //list of subcategories
-            var subTypes = context.TransactionSubType.ToList();
+            var subCats = context.TransactionSubType.ToList();
             //cycle through each subcategory and define its Quantity as 
-            //subCats.ForEach(sc => sc.Quantity = context.Transaction.Count(p => p.TransactionSubTypeId == sc.TransactionSubTypeId));
+            subCats.ForEach(sc => sc.Quantity = context.Transaction.Count(p => p.TransactionSubTypeId == sc.TransactionSubTypeId));
             // model.TransactionTypes = TransactionTypes;
             return View(model);
         }
