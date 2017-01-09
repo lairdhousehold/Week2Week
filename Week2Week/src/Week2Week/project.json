@@ -45,7 +45,8 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "System.Linq": "4.3.0"
+    "System.Linq": "4.3.0",
+    "Bootstrap.v3.Datetimepicker": "4.17.44"
   },
 
   "tools": {

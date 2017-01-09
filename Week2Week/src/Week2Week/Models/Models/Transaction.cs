@@ -37,8 +37,6 @@ namespace Week2Week.Models
         public TransactionSubType TransactionSubType { get; set; }
 
         public bool IsReoccurring { get; set; }
-        [NotMappedAttribute]
-        public int Quantity { get; set; }
 
     }
 }
