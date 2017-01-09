@@ -13,6 +13,8 @@
         <div class="col-md-6"><a asp-action="Detail" asp-route-id="@Transaction.TransactionId">@Html.DisplayFor(modelItem => Transaction.Title)</a></div>
         <div class="col-md-2">$@Html.DisplayFor(modelItem => Transaction.Amount)</div>
         <div class="col-md-2">@Html.DisplayFor(modelItem => Transaction.Title)</div>
+        <td>@Html.ActionLink("Edit", "Edit", "Transaction", new { id = @Transaction.TransactionId })</td>
+        <td>@Html.ActionLink("Delete", "Delete", "Transaction", new { id = @Transaction.TransactionId })</td>
         <div class="col-md-2">
         </div>
     </div>

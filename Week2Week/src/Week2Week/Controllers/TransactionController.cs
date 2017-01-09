@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,12 +12,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Week2Week.Models;
 using Week2Week.Data;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Week2Week.Controllers
-{         [Authorize]
+{
+    [Authorize]
     public class TransactionController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -30,7 +33,11 @@ namespace Week2Week.Controllers
             _userManager = user;
             context = ctx;
         }
-
+        //public async Task<IActionResult> Balance()
+        // {
+        // TransactionList model = new TransactionList(context);
+        // model.Transactions = await context.Transaction.OrderBy(s => s.TransactionType.Label.ToUpper()).ToListAsync();
+        // }
         //Method: creates async method for two purposes: extract the Customer table from current context for extraction into the dropdown menu and return the Index view of complete Transaction list
         public async Task<IActionResult> Index()
         {
@@ -67,6 +74,7 @@ namespace Week2Week.Controllers
             return View(model);
         }
 
+
         //Method: Purpose is to send the customer's Transaction to the database and then redirects the user to the homepage (AllTransactionsView)
         [HttpPost]
         [Authorize]
@@ -91,6 +99,26 @@ namespace Week2Week.Controllers
             CreateTransaction model = new CreateTransaction(context);
             return View(model);
         }
+        [HttpGet]
+        public ActionResult Edit([FromRoute]int id)
+        {
+            return View(context.Transaction.Where(c => c.TransactionId.Equals(id)).SingleOrDefault());
+        }
+        [HttpPost]
+        public ActionResult Edit(Week2Week.Models.Transaction trans)
+        {
+            context.Entry<Week2Week.Models.Transaction>(trans).State = EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+            var trans = context.Transaction.Where(c => c.TransactionId.Equals(id)).SingleOrDefault();
+            context.Transaction.Remove(trans);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
 
         [HttpPost]
         public IActionResult GetSubTypes([FromRoute]int id)
@@ -158,7 +186,7 @@ namespace Week2Week.Controllers
         }
 
         //Method: Purpose is to create a new line item in the database when a customer clicks the "Add to Cart" button on a Transaction. Accepts an argument of the TransactionId, which is passed in through the post request attached to event listener on "Add to Cart" button
-        
-        }
+
     }
+}
 

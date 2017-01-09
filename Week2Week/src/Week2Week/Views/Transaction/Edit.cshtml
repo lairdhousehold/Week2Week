@@ -1,0 +1,39 @@
+﻿@model Week2Week.Models.Transaction
+
+@using Microsoft.AspNetCore.Identity
+@using Week2Week.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+@if (@UserManager.GetUserName(User) != null)
+{
+    <h3>
+        Hello, @UserManager.GetUserName(User)!
+    </h3>
+}
+else
+{
+    <h4>Edit or Delete this Transaction</h4>
+}
+
+<div class="row">
+    @using (Html.BeginForm())
+    {
+        @Html.EditorForModel("Transaction")
+        <input type="submit" value="Submit" />
+
+    }
+</div>
+
+<div>
+
+</div>
+
+<div>
+    &lt;&lt; <a asp-action="Index">Back to List</a>
+</div>
