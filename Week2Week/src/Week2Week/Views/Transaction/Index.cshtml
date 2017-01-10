@@ -20,7 +20,7 @@
     <div class="row TransactionRow">
 
         <div class="col-md-6"><a asp-action="Detail" asp-route-id="@Transaction.TransactionId">@Html.DisplayFor(modelItem => Transaction.Title)</a></div>
-        <div class="col-md-2">$@Html.DisplayFor(modelItem => Transaction.Amount)</div>
+        <div class="col-md-2">Amount $@Html.DisplayFor(modelItem => Transaction.Amount)</div>
         <div class="col-md-2">@Html.DisplayFor(modelItem => Transaction.SelectedDate)</div>
         
 
