@@ -22,7 +22,7 @@ else
 
 <div class="row">
     <div class="col-md-3">@Html.DisplayFor(model => model.Transaction.Title)</div>
-    <div class="col-md-3">@Html.DisplayFor(model => model.Transaction.Amount)</div>
+    <div class="col-md-3">Amount     $@Html.DisplayFor(model => model.Transaction.Amount)</div>
     <div class="col-md-3">@Html.DisplayFor(model => model.Transaction.SelectedDate)</div>
    
     @if (@UserManager.GetUserName(User) != null)

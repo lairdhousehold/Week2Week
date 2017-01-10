@@ -1,7 +1,8 @@
-﻿body {
+﻿.row {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-image: url("http://www.clipartbest.com/cliparts/RcG/yXz/RcGyXzK5i.gif");
+    background-color: royalblue;
+    font-size:80px;
 }
 
 /* Wrapping element */

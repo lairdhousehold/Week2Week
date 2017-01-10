@@ -20,7 +20,7 @@
     <div class="row TransactionRow">
 
         <div class="col-md-6"><a asp-action="Detail" asp-route-id="@Transaction.TransactionId">@Html.DisplayFor(modelItem => Transaction.Title)</a></div>
-        <div class="col-md-2">$@Html.DisplayFor(modelItem => Transaction.Amount)</div>
+        <div class="col-md-2">Amount $@Html.DisplayFor(modelItem => Transaction.Amount)</div>
         <div class="col-md-2">@Html.DisplayFor(modelItem => Transaction.SelectedDate)</div>
         
 
@@ -36,3 +36,6 @@
     
 }
 <div class="col-md-6">This is your current balance    $@(Model.Transactions.Where(c=> c.TransactionTypeId == 2).Sum(x => x.Amount) - @Model.Transactions.Where(c=> c.TransactionTypeId == 1).Sum(x => x.Amount))</div>
+@section css {
+    <link href="@Url.Content("~/css/site.css")" rel="stylesheet" />
+}

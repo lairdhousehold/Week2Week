@@ -3,11 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] -Week2Week</title>
+    <title class="nav">@ViewData["Title"] -Week2Week</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/css/StyleSheet.css" rel="stylesheet" />
+            <meta charset="utf-8" />
+            <meta name="description" content="The content description" />
+            <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
+            <title>@ViewBag.Title</title>
+            @RenderSection("css", false)
+        
     </environment>
     <environment names="Staging,Transactionion">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -45,6 +52,8 @@
     </div>
 
     <environment names="Development">
+
+        <script src="~/css/StyleSheet.css">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
