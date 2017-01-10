@@ -8,14 +8,31 @@
 
 @foreach (var Transaction in Model.Transactions)
 {
+    if (Transaction.TransactionTypeId == 1)
+    {
+        <p>OutGo</p>
+    }
+    if (Transaction.TransactionTypeId == 2)
+    {
+        <p>Income</p>
+    }
+
     <div class="row TransactionRow">
 
         <div class="col-md-6"><a asp-action="Detail" asp-route-id="@Transaction.TransactionId">@Html.DisplayFor(modelItem => Transaction.Title)</a></div>
         <div class="col-md-2">$@Html.DisplayFor(modelItem => Transaction.Amount)</div>
-        <div class="col-md-2">@Html.DisplayFor(modelItem => Transaction.Title)</div>
-        <td>@Html.ActionLink("Edit", "Edit", "Transaction", new { id = @Transaction.TransactionId })</td>
-        <td>@Html.ActionLink("Delete", "Delete", "Transaction", new { id = @Transaction.TransactionId })</td>
+        <div class="col-md-2">@Html.DisplayFor(modelItem => Transaction.SelectedDate)</div>
+        
+
+
+        <p>@Html.ActionLink("Edit", "Edit", "Transaction", new { id = @Transaction.TransactionId })
+        @Html.ActionLink("Delete", "Delete", "Transaction", new { id = @Transaction.TransactionId })</p>
         <div class="col-md-2">
+
         </div>
     </div>
+
+
+    
 }
+<div class="col-md-6">This is your current balance    $@(Model.Transactions.Where(c=> c.TransactionTypeId == 2).Sum(x => x.Amount) - @Model.Transactions.Where(c=> c.TransactionTypeId == 1).Sum(x => x.Amount))</div>

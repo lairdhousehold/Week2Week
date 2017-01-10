@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 using Week2Week.Models;
 using Week2Week.Data;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Week2Week.Migrations;
 
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -45,7 +46,7 @@ namespace Week2Week.Controllers
             TransactionList model = new TransactionList(context);
 
             // Set the properties of the view model
-            model.Transactions = await context.Transaction.OrderBy(s => s.Title.ToUpper()).ToListAsync();
+            model.Transactions = await context.Transaction.OrderBy(s => s.SelectedDate.Date).ToListAsync();
 
             return View(model);
         }
@@ -56,6 +57,7 @@ namespace Week2Week.Controllers
             TransactionList model = new TransactionList(context);
 
             model.Transactions = await context.Transaction.Where(p => p.TransactionSubTypeId == id).OrderBy(s => s.Title.ToUpper()).ToListAsync();
+               
             // codebase.Methods.Where(x => (x.Body.Scopes.Count > 5) && (x.Foo == "test"));
             return View("Index", model);
 
@@ -186,7 +188,7 @@ namespace Week2Week.Controllers
         }
 
         //Method: Purpose is to create a new line item in the database when a customer clicks the "Add to Cart" button on a Transaction. Accepts an argument of the TransactionId, which is passed in through the post request attached to event listener on "Add to Cart" button
-
+       
     }
 }
 
